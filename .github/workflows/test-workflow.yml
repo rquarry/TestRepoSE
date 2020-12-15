@@ -1,0 +1,14 @@
+name: test-code
+on: [push]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+        name: Checkout code
+        
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.0.2
+        
+      - name: Build and Publish Web App
+        run: msbuild ConsoleApplication2.vcxproj /p:Configuration=Release
